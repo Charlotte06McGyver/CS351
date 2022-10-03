@@ -3,6 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
+//test
+
 int affichageEnDecimal(char *mot){
 
     int i = 0;
