@@ -43,32 +43,10 @@ int calcul_notation_polonaise (char *operation){
 
 }
 
-
-
-
-
 int main()
 {
 
-    /*
-    int i;
-    pileInt maPile = creerPile();
-    i = 0;
-    while (i<=25){
-        empiler(maPile, i);
-        i++;
-    }
-
-    while (!estPileVide(maPile)){
-        printf("Je depile : %d\n", depiler(maPile));
-    }
-
-    return 0;
-
-    */
-
-   printf("42+5*67-/ : \n");
+   printf("Calcul en notation polonaise inversee : 42+5*67-/ =  ");
    printf("%d\n", calcul_notation_polonaise("42+5*67-/"));
 
-   return 0;
 }
