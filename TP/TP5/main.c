@@ -23,7 +23,7 @@ int calcul_notation_polonaise (char *operation){
             if (operation[i]=='-'){
                 temp_a = depiler(Pile_temp);
                 temp_b = depiler(Pile_temp);
-                empiler(Pile_temp, (temp_a - temp_b));
+                empiler(Pile_temp, (temp_b - temp_a));
             }
             if (operation[i]=='*'){
                 temp_a = depiler(Pile_temp);
@@ -33,7 +33,7 @@ int calcul_notation_polonaise (char *operation){
             if (operation[i]=='/'){
                 temp_a = depiler(Pile_temp);
                 temp_b = depiler(Pile_temp);
-                empiler(Pile_temp, (temp_a / temp_b));
+                empiler(Pile_temp, (temp_b / temp_a));
             }
         }
     }
