@@ -26,22 +26,24 @@ void quicksort (int tab[], int premier, int dernier){  //on prend en parametre l
 
     if (premier<dernier) {
         pivot = premier; //on prend le pivot de façon aleatoire, soit le premier element du tableau
-        droite = premier;
-        gauche = dernier;
-        while (droite<gauche){
-            while (tab[droite]<=tab[pivot] && droite<dernier){
-                droite++;
+        gauche = premier;
+        droite = dernier;
+        while (gauche<droite){
+            while (tab[gauche]<=tab[pivot] && gauche<dernier){
+                gauche++;
             }
-            while (tab[gauche]>tab[pivot]){
-                gauche--;
+            while (tab[droite]>tab[pivot]){
+                droite--;
             }
-            if (droite<gauche){
-                swap(&tab[droite], &tab[gauche]);
+            if (gauche<droite){
+                swap(&tab[gauche], &tab[droite]);
+                gauche++;
+                droite--;
             }
         }
-        swap(&tab[pivot], &tab[gauche]);
-        quicksort(tab, premier, gauche-1);
-        quicksort(tab, gauche+1, dernier);
+        swap(&tab[pivot], &tab[droite]);
+        quicksort(tab, premier, droite-1);
+        quicksort(tab, droite+1, dernier);
 
     }
 }
