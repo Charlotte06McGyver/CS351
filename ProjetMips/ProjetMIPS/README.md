@@ -10,7 +10,7 @@ date: [18/10/22]
 
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :
   - [X] Vérifié que `make test-cli` ne renvoie pas d'erreur. 
-  pb avec le makefile, cela crée bien les fichiers mais nous avons quand même les erreurs
+  `pb avec le makefile, cela crée bien les fichiers mais nous avons quand même les erreurs`
   - [X] Vérifié que `make tests` se plaint sur le nombre d'instructions et pas
       sur l'existence des fichiers de sortie.
   - [X] Vu que les soumissions se font avec `make tar`.
