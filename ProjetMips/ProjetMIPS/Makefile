@@ -1,5 +1,5 @@
 # INDIQUEZ ICI: Votre nom et celui de votre binôme
-AUTEURS := Nom1_Nom2
+AUTEURS := CASARRUBIOS_VINCENT
 
 MAIN := emul-mips
 SRC_C := $(wildcard src/*.c)
