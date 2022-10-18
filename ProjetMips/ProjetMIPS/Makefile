@@ -36,7 +36,7 @@ clean:
 # Tapez "make tests" pour lancer les tests.
 
 tests: $(MAIN)
-	@ python test.py -v
+	@ python3 test.py -v
 
 # Tapez "make tar" pour faire une archive du dossier avant chaque rendu.
 

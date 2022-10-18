@@ -2,17 +2,18 @@
 
 ---
 title: Projet CS351 (2022-2023): Émulateur MIPS
-author: [COMPLÉTER ICI]
-date: [COMPLÉTER ICI]
+author: [CASARRUBIOS_VINCENT]
+date: [18/10/22]
 ---
 
 ## Rendu 1
 
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :
-  - [ ] Vérifié que `make test-cli` ne renvoie pas d'erreur.
-  - [ ] Vérifié que `make tests` se plaint sur le nombre d'instructions et pas
+  - [X] Vérifié que `make test-cli` ne renvoie pas d'erreur. 
+  pb avec le makefile, cela crée bien les fichiers mais nous avons quand même les erreurs
+  - [X] Vérifié que `make tests` se plaint sur le nombre d'instructions et pas
       sur l'existence des fichiers de sortie.
-  - [ ] Vu que les soumissions se font avec `make tar`.
+  - [X] Vu que les soumissions se font avec `make tar`.
 
 
 ## Rendu 2
