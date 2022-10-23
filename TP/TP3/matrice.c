@@ -16,7 +16,8 @@ int affiche_matrice (int n, int p, int tab[][8]){
 }
 
 int additionner_matrice (int n, int p, int tab1[][8], int tab2[][8]){
-
+// Il faut ques les matrices soient de taille égale
+//Elle sera de taille 3x2
     int i, j;
     int matriceResult[8][8];
 
@@ -34,7 +35,7 @@ int additionner_matrice (int n, int p, int tab1[][8], int tab2[][8]){
 
 
 int transposee(int n, int p, int tab[][8]){
-
+//De la taille de A
     int i,j;
     int matriceTransposee[8][8];
 
@@ -109,7 +110,7 @@ int main(){
     affiche_matrice(3, 2, matriceC);
 
     additionner_matrice(2, 3, matriceA, matriceB);
-    
+
     transposee(3, 2, matriceA);
 
     produitMatriciel(2, 3, 2, matriceA, matriceC);

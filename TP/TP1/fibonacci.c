@@ -33,3 +33,4 @@ int main(){
     printf("La suite de fibonacci de rang %d est : %d\n", rang, test);
 
 }
+// Si l'utilisateur rentre des n négatif le code ne fonctionnera pas, il ne prend que des valeurs >=0
