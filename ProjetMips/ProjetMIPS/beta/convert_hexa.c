@@ -87,7 +87,6 @@ int byte(int value){
   return i;
 }
 
-
 /*Fonction qui convertit un décimal en binaire*/
 void *bit(int value, int size){
   int res = 0;

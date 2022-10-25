@@ -19,9 +19,9 @@ R_type Div = {.opcode = "000000", .rd = "00000", .sa = "00000", .fonction = "011
 R_type And = {.opcode = "000000", .sa = "00000", .fonction = "100100"};
 R_type Or = {.opcode = "000000", .sa = "00000", .fonction = "100101"};
 R_type Xor = {.opcode = "000000", .sa = "00000", .fonction = "100110"};
-R_type Rotr = {.opcode = "000000", .rs = "0000", .fonction = "000010"};
+R_type Rotr = {.opcode = "000000", .rs = "0000", .fonction = "000010"}; //instruction spéciale
 R_type Sll = {.opcode = "000000", .rs = "00000", .fonction = "000000"};
-R_type Srl = {.opcode = "000000", .rs = "0000", .fonction = "000010"};
+R_type Srl = {.opcode = "000000", .rs = "0000", .fonction = "000010"}; //instruction spéciale
 R_type Slt = {.opcode = "000000", .sa = "00000", .fonction = "101010"};
 R_type Mfhi = {.opcode = "000000", .rs = "00000", .rt = "00000", .sa =  "00000", .fonction = "010000"};
 R_type Mflo = {.opcode = "000000", .rs = "00000", .rt = "00000", .sa =  "00000", .fonction = "010010"};
