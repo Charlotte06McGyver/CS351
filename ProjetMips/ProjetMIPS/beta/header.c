@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*Fonction de gestion des erreurs*/
 void fatal(char *message) {
    char error_message[100];
 
@@ -11,6 +12,7 @@ void fatal(char *message) {
    exit(-1);
 }
 
+/*Fonction qui alloue de la mémoire et qui teste si la mémoire est déjà allouée*/
 void *ec_malloc(unsigned int size) {
    void *ptr;
    ptr = malloc(size);

@@ -13,11 +13,11 @@ int main(){
   printf("%s\n", code);
   mot = gotohexa(code);
   printf("%s\n", mot);
-  int exit =0;
+  /*int exit =0;
   while(exit != 1){
-    scanf("%[^\n]%*c", commande);
+    scanf("%[^\n]%*c", commande); /*prend en compte les espaces (limite du scanf)
     printf("%s\n", commande);
-  }
+  }*/
 
 
 
