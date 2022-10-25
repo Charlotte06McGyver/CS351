@@ -24,5 +24,14 @@ int main(){
   printf("Instruction : %s\n", "ADDI $5, $0, 5");
   printf("Opérateur : %s\n", lecture_operateur("ADDI $5, $0, 5"));
 
+  printf("Instruction : %s\n", "ADD $7, $15, $2");
+  int* result = lecture_operandeR("ADD $7, $15, $2");
+
+  int i = 0;
+  for(i=0; i<3; i++){
+    printf("%d ", result[i]);
+  }
+  printf("\n");
+
 
 }
