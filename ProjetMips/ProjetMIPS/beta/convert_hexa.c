@@ -4,7 +4,6 @@
 #include "header.h"
 #include <math.h>
 
-/*Fonction qui convertit les paquets de 4 bits en puissances de 2*/
 int binaryhexa(char mot[4]){
   int value = 0;
   if(mot[0] == '1'){
@@ -22,7 +21,6 @@ int binaryhexa(char mot[4]){
   return value;
 }
 
-/*Fonction qui convertit en hexa tous les nombres entre 10 et 15*/
 char tohexa(int value){
   char resultat;
   if(value == 10){
@@ -43,13 +41,12 @@ char tohexa(int value){
   return resultat;
 }
 
-/*Fonction qui convertit 32 bits en un tableau de 8 éléments (en hexadécimal)*/
-void *gotohexa(char *code){
+void gotohexa(char *code, char *mot){
   int i = 0;
   int index = 0;
-  char value[2];
-  char *mot = ec_malloc(8); //tableau dans lequel on va stocker nos éléments
-  char *mot1= ec_malloc(5);
+  char *value = malloc(sizeof(char)*2);
+  char *mot1= (char*)ec_malloc(5);
+
   while(code[index] != '\0'){
     while((index+1)%4 != 0){
       mot1[i] = code[index];
@@ -60,26 +57,23 @@ void *gotohexa(char *code){
     value[0] = tohexa(binaryhexa(mot1));
     value[1] = '\0';
     strcat(mot, value);
-    binaryhexa(mot1);
     index++;
     i = 0;
 
 }
-  //printf("%s\n", mot);
+  mot[8] = '\0';
   free(mot1);
-  return mot;
+  free(value);
 
 }
 
-/*Fonction qui cherche la puissance de 2 qui correspond à notre entier*/
 int byte(int value){
   int i= 0;
   int a = 1;
   while(a == 1){
     if(pow(2,i)<= value){
       i++;
-    }
-    else{
+    }else{
       a = 0;
     }
   }
@@ -87,14 +81,13 @@ int byte(int value){
   return i;
 }
 
-/*Fonction qui convertit un décimal en binaire*/
-void *bit(int value, int size){
+void bit(int value, int size, char *tab){
   int res = 0;
-  char *tab = ec_malloc(size+1); //tableau de bit qui va être retourné (taille +1 pour la sentinelle)
   int i = 0;
   int index = 0;
   int index_of_1 = 0;
   int index_prec = 0;
+
   while(value != 0){
     index = byte(value);
     index_of_1 = size - index - 1;
@@ -114,5 +107,4 @@ void *bit(int value, int size){
   }
   tab[size] = '\0';
 
-  return tab;
 }
