@@ -5,9 +5,9 @@
 
 
 /*Fonction qui lit une instruction MIPS et qui renvoie l'opérateur de la fonction dans un tableau de char */
-char* lecture_operateur (char* instruction){
+void lecture_operateur (char* instruction, char * operateur){
 
-    char* operateur = ec_malloc(8); //on cree notre tableau contenant notre operateur
+     //on cree notre tableau contenant notre operateur
     /*on constate que nos opérateur sont codes au plus sur 7 caractères, le 8e caractere est pour la sentinelle*/
     int i = 0;
 
@@ -15,18 +15,16 @@ char* lecture_operateur (char* instruction){
         operateur[i] = instruction[i];
         i++;
     }
-    operateur[8] = '\0'; //on rajoute manuellement la sentinelle
+    operateur[i] = '\0'; //on rajoute manuellement la sentinelle
 
-    return operateur;
 }
 
 /*On fait le choix de réaliser une fonction par type d'instruction pour la lecture des opérandes*/
 
 //ADD $7, $5, $2
 
-int* lecture_operandeR (char* instruction){
+void lecture_operandeR (char* instruction, int* operande){
 
-    int* operande = ec_malloc(sizeof(int)*3);
     int i = 0;
     int c = 0;
 
@@ -41,7 +39,6 @@ int* lecture_operandeR (char* instruction){
         } 
         i++;
     }
-    return operande;
 }
 
 int* lecture_operandeI (char* instruction){
@@ -59,9 +56,9 @@ int* lecture_operandeI (char* instruction){
             operande[c] = (instruction[i+1] - 48)*10 + (instruction[i+2] - 48);
             c++;
         } 
-        else if{
+        /* else if{
             
-        }
+        }*/
         i++;
     }
     return operande;
