@@ -41,11 +41,10 @@ void lecture_operandeR (char* instruction, int* operande){
     }
 }
 
-int* lecture_operandeI (char* instruction){
+void lecture_operandeI (char* instruction, int* operande){
 
-    int* operande = ec_malloc(sizeof(int)*3);
-    int i = 0;
-    int c = 0;
+    int i = 0; //indice de l'instruction
+    int c = 0; //indice de l'operande
 
     while (instruction[i] != '\0'){
         if ((instruction[i] == '$') && ((instruction[i+2] == ',') || (instruction[i+2] == '\0'))){ //si le registre est entre 0 et 9
@@ -61,5 +60,4 @@ int* lecture_operandeI (char* instruction){
         }*/
         i++;
     }
-    return operande;
 }
