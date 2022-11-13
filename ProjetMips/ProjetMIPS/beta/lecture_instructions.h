@@ -1,3 +1,3 @@
-char* lecture_operateur (char* instruction);
-int* lecture_operandeR (char* instruction);
+void lecture_operateur (char* instruction, char *);
+void lecture_operandeR (char* instruction, int *);
 int* lecture_operandeI (char* instruction);
