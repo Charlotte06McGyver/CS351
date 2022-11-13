@@ -1,0 +1,1 @@
+int reste(int a,int b);

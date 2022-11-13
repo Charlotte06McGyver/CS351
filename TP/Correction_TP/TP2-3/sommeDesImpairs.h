@@ -1,0 +1,1 @@
+int sommeDesImpairs(int d,int f);

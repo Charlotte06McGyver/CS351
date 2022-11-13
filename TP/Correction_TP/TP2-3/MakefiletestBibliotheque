@@ -1,0 +1,20 @@
+testBibliotheque: estUneDecompostionDe.o PGCD.o valeurAbsolue.o ppm.o puissanceMB.o quotient.o reste.o sommeDesImpairs.o testBibliotheque.o
+	gcc -o testBibliotheque estUneDecompostionDe.o PGCD.o valeurAbsolue.o ppm.o puissanceMB.o quotient.o reste.o sommeDesImpairs.o testBibliotheque.o
+estUneDecompostionDe.o: estUneDecompostionDe.c
+	gcc -c estUneDecompostionDe.c -Wall -ansi -pedantic -o estUneDecompostionDe.o
+PGCD.o: PGCD.c
+	gcc -c PGCD.c -Wall -ansi -pedantic -o PGCD.o
+valeurAbsolue.o: valeurAbsolue.c
+	gcc -c valeurAbsolue.c -Wall -ansi -pedantic -o valeurAbsolue.o
+ppm.o: ppm.c valeurAbsolue.h pgcd.h
+	gcc -c ppm.c -Wall -ansi -pedantic -o ppm.o
+puissanceMB.o: puissanceMB.o 
+	gcc -c puissanceMB.c -Wall -ansi -pedantic -o puissanceMB.o
+quotient.o: quotient.c
+	gcc -c quotient.c -Wall -ansi -pedantic -o quotient.o
+reste.o:reste.c quotient.h
+	gcc -c reste.c -Wall -ansi -pedantic -o reste.o
+sommeDesImpairs.o: sommeDesImpairs.c
+	gcc -c sommeDesImpairs.c -Wall -ansi -pedantic -o sommeDesImpairs.o
+testBibliotheque.o:testBibliotheque.c pgcd.h quotient.h valeurAbsolue.h reste.h sommeDesImpairs.h estUneDecompositionDe.h ppm.h puissanceMB.h
+	gcc -c testBibliotheque.c -Wall -ansi -pedantic -o testBibliotheque.o

@@ -1,0 +1,1 @@
+int estUneDecompositionDe(int d,int f);
