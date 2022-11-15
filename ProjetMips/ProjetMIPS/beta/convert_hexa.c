@@ -4,8 +4,9 @@
 #include "header.h"
 #include <math.h>
 
-int binaryhexa(char mot[4]){
+int binaryhexa(char mot[4]){//Converti la veleur binaire en décimal
   int value = 0;
+  //On a un tableau de bit, pour chaque bit du tableau qui vaut 1 on fait 2^(4-son rang)
   if(mot[0] == '1'){
     value = value + 8;
   }
@@ -21,7 +22,7 @@ int binaryhexa(char mot[4]){
   return value;
 }
 
-char tohexa(int value){
+char tohexa(int value){//converti la valeur décimal en hexadécimal
   char resultat;
   if(value == 10){
     resultat = 'a';
@@ -38,36 +39,39 @@ char tohexa(int value){
   }else{
     resultat = value + '0';
   }
+  // on ne moddifie pas les valeurs qio sont comprise entre 0 et 9
   return resultat;
 }
 
-void gotohexa(char *code, char *mot){
+void gotohexa(char *code, char *mot){// converti 32 bit en hexadécimal
   int i = 0;
   int index = 0;
   char *value = malloc(sizeof(char)*2);
-  char *mot1= (char*)ec_malloc(5);
+  char *mot1= (char*)malloc(5);
 
-  while(code[index] != '\0'){
-    while((index+1)%4 != 0){
+  while(code[index] != '\0'){// on parcourt tout notre tableau
+
+    while((index+1)%4 != 0){// fait des paquets de 4 bits
       mot1[i] = code[index];
       i++;
       index++;
     }
+
     mot1[i]=code[index];
-    value[0] = tohexa(binaryhexa(mot1));
+    value[0] = tohexa(binaryhexa(mot1));//converti le paquet de 4 bit en héxa
     value[1] = '\0';
     strcat(mot, value);
     index++;
     i = 0;
 
-}
+  }
   mot[8] = '\0';
   free(mot1);
   free(value);
 
 }
 
-int byte(int value){
+int byte(int value){//Calcule le nombre de bit nécessaire pour coder notre décimal en binaire
   int i= 0;
   int a = 1;
   while(a == 1){
@@ -81,7 +85,7 @@ int byte(int value){
   return i;
 }
 
-void bit(int value, int size, char *tab){
+void bit(int value, int size, char *tab){//Converti un décimal en binaire sur size bit
   int res = 0;
   int i = 0;
   int index = 0;
@@ -89,7 +93,7 @@ void bit(int value, int size, char *tab){
   int index_prec = 0;
 
   while(value != 0){
-    index = byte(value);
+    index = byte(value);//Nous donne le nombre de bit nécessaire pour coder notre nombre
     index_of_1 = size - index - 1;
     res = (int)(pow(2, index));
     value = value - res;
