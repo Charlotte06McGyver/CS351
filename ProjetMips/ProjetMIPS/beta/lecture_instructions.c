@@ -47,6 +47,8 @@ void lecture_operandeI (char* instruction, int* operande){
     int c = 0; //indice de l'operande
 
     while (instruction[i] != '\0'){
+
+        /*Lecture des registres*/
         if ((instruction[i] == '$') && ((instruction[i+2] == ',') || (instruction[i+2] == '\0'))){ //si le registre est entre 0 et 9
             operande[c] = instruction[i+1] -48;
             c++;
@@ -55,6 +57,8 @@ void lecture_operandeI (char* instruction, int* operande){
             operande[c] = (instruction[i+1] - 48)*10 + (instruction[i+2] - 48);
             c++;
         } 
+
+        /*Lecture de la valeur immediate (offset)*/
         /* else if{
             
         }*/
