@@ -21,7 +21,7 @@ void lecture_operateur (char* instruction, char * operateur){
 
 /*On fait le choix de réaliser une fonction par type d'instruction pour la lecture des opérandes*/
 
-//ADD $7, $5, $2
+//ADD $7, $15, $2
 
 void lecture_operandeR (char* instruction, int* operande){
 
@@ -41,27 +41,50 @@ void lecture_operandeR (char* instruction, int* operande){
     }
 }
 
+//ADDI $5, $0, 5
+
 void lecture_operandeI (char* instruction, int* operande){
 
     int i = 0; //indice de l'instruction
     int c = 0; //indice de l'operande
 
+
     while (instruction[i] != '\0'){
 
         /*Lecture des registres*/
-        if ((instruction[i] == '$') && ((instruction[i+2] == ',') || (instruction[i+2] == '\0'))){ //si le registre est entre 0 et 9
+        if ((instruction[i] == '$') && ((instruction[i+2] == ','))){ //si le registre est entre 0 et 9
             operande[c] = instruction[i+1] -48;
             c++;
         }
-        else if((instruction[i] == '$') && ((instruction[i+3] == ',') || (instruction[i+3] == '\0'))){ //si le registre est superieur a 10 
+        else if((instruction[i] == '$') && (instruction[i+3] == ',')){ //si le registre est superieur a 10 
             operande[c] = (instruction[i+1] - 48)*10 + (instruction[i+2] - 48);
             c++;
-        } 
+        }
 
-        /*Lecture de la valeur immediate (offset)*/
-        /* else if{
-            
-        }*/
+        /*Lecture de la valeur immediate codée sur 16 bits ! (offset)*/
+        else if((instruction[i] == ' ') && (instruction[i+1] != '$')){
+            int signe;
+            i++;
+            if (instruction[i] == '-'){  //si la valeur de l'offset est négative
+                signe = -1;
+                operande[c] = -(instruction[i+1]-48);
+                i++;
+            }
+            else{                       //si la valeur de l'offset est positive
+                signe = 1;
+                operande[c] = instruction[i]-48;
+            }
+            while (instruction[i+1] != '\0'){ //tant qu'on est pas arrivé à la fin de l'instruction, on lit la valeur de l'offset que l'on transforme en décimal
+                i++;
+                operande[c] = operande[c]*10 + signe*(instruction[i]-48);
+            }
+        }
+
         i++;
     }
+}
+
+
+void lecture_operandeJ (char* instruction, int* operande) {
+
 }
