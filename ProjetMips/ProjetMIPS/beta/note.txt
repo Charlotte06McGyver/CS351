@@ -1,0 +1,33 @@
+R :
+//ADD#
+//SUB#
+//MULT#
+//DIV#
+//AND#
+//OR#
+//XOR#
+//ROTR c'est spéciale2
+//SLL#
+//SRL c'est spéciale2
+//SLT#
+//MFHI#
+//MFLO#
+//JR c'est spéciale
+
+I :
+//ADDI
+//LW
+//SW
+//LUI
+//BEQ
+//BNE
+//BGTZ
+//BLEZ
+
+J :
+//J
+//JAL
+
+24
+
+SLT $15, $2, $1
