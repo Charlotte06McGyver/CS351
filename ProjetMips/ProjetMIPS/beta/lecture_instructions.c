@@ -31,10 +31,16 @@ void lecture_operandeR (char* instruction, int* operande){
     while (instruction[i] != '\0'){
         if ((instruction[i] == '$') && ((instruction[i+2] == ',') || (instruction[i+2] == '\0'))){ //si le registre est entre 0 et 9
             operande[c] = instruction[i+1] -48;
+            if((operande[c]<0) || (operande[c]>31)){//Pour savoir si les registre donnés sont valide
+                fatal("Insérer des registres entre 0 et 31");
+            }
             c++;
         }
         else if((instruction[i] == '$') && ((instruction[i+3] == ',') || (instruction[i+3] == '\0'))){ //si le registre est superieur a 10 
             operande[c] = (instruction[i+1] - 48)*10 + (instruction[i+2] - 48);
+            if((operande[c]<0) || (operande[c]>31)){//Pour savoir si les registre donnés sont valide
+                fatal("Insérer des registres entre 0 et 31");
+            }
             c++;
         } 
         i++;
@@ -54,18 +60,10 @@ void lecture_operandeI (char* instruction, int* operande){
         /*Lecture des registres*/
         if ((instruction[i] == '$') && ((instruction[i+2] == ','))){ //si le registre est entre 0 et 9
             operande[c] = instruction[i+1] -48;
-
-            if((operande[c]<0) || (operande[c]>31)){//Pour savoir si les registre donnés sont valide
-                fatal("Insérer des registres entre 0 et 31");
-            }
             c++;
         }
         else if((instruction[i] == '$') && (instruction[i+3] == ',')){ //si le registre est superieur a 10 
             operande[c] = (instruction[i+1] - 48)*10 + (instruction[i+2] - 48);
-            
-            if((operande[c]<0) || (operande[c]>31)){//Pour savoir si les registre donnés sont valide
-                fatal("Insérer des registres entre 0 et 31");
-            }
             c++;
         }
 
