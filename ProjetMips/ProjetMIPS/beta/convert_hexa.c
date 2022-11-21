@@ -96,24 +96,67 @@ void bit(int value, int size, char *tab){
   int index = 0;
   int index_of_1 = 0;
   int index_prec = 0;
+  int flag =1;
 
-  while(value != 0){
-    index = byte(value);//Nous donne le nombre de bit nécessaire pour coder notre nombre
-    index_of_1 = size - index - 1;
-    res = (int)(pow(2, index));
-    value = value - res;
-    for(index_prec; index_prec < index_of_1; index_prec ++){
-      tab[index_prec] = '0';
+  if(value>=0){
+    while(value != 0){
+      index = byte(value);//Nous donne le nombre de bit nécessaire pour coder notre nombre
+      index_of_1 = size - index - 1;
+      res = (int)(pow(2, index));
+      value = value - res;
+      for(index_prec; index_prec < index_of_1; index_prec ++){
+        tab[index_prec] = '0';
+      }
+      index_prec ++;
+      tab[index_of_1] = '1';
     }
-    index_prec ++;
-    tab[index_of_1] = '1';
-  }
-  if(index_of_1 != size){
-    i = index_of_1 +1;
-    for(i; i<size; i++){
-      tab[i] = '0';
+    if(index_of_1 != size){
+      i = index_of_1 +1;
+      for(i; i<size; i++){
+        tab[i] = '0';
+      }
     }
+    tab[size] = '\0';
+  }else{
+    value = 0 - value;
+    while(value != 0){
+      index = byte(value);//Nous donne le nombre de bit nécessaire pour coder notre nombre
+      index_of_1 = size - index - 1;
+      res = (int)(pow(2, index));
+      value = value - res;
+      for(index_prec; index_prec < index_of_1; index_prec ++){
+        tab[index_prec] = '0';
+      }
+      index_prec ++;
+      tab[index_of_1] = '1';
+    }
+    if(index_of_1 != size){
+      i = index_of_1 +1;
+      for(i; i<size; i++){
+        tab[i] = '0';
+      }
+    }
+    tab[size] = '\0';
+    i = 0;
+    for(i;i<size; i++){
+      if(tab[i] == '0'){
+        tab[i] ='1';
+      }else{
+        tab[i] = '0';
+      }
+    }
+    i = size -1;
+    for(i;i>=0;i--){
+      if((flag == 1) && (tab[i] =='0')){
+        tab[i] = '1';
+        flag = 0;
+        i = -1;
+      }else{
+        tab[i] = '0';
+        flag = 1;
+      }
+    }
+    tab[size] = '\0';
+    
   }
-  tab[size] = '\0';
-
 }
