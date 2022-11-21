@@ -6,7 +6,8 @@
 #include "convert_hexa.h"
 #include "lecture_instructions.h"
 
-int commande_in(char * ligne, char *com){// Teste si nous somme à la bonne ligne
+/*Fonction qui teste si nous sommes à la bonne ligne*/
+int commande_in(char * ligne, char *com){
     char *commande = malloc(sizeof(char)*9);
     int i =0;
     while((ligne[i]!=':') && (ligne[i]!='\0')){
@@ -22,7 +23,9 @@ int commande_in(char * ligne, char *com){// Teste si nous somme à la bonne lign
     free(commande);
     return i;
 }
-char type(char *ligne){// permet d'avoir le type
+
+/*Fonction qui permet d'avoir le type de l'instruction*/
+char type(char *ligne){
     int i = 0;
     while(ligne[i] != ':'){
         i++;
@@ -30,7 +33,9 @@ char type(char *ligne){// permet d'avoir le type
     return ligne[i+1];
 
 }
-void get_op(char *ligne, char *op){// permet d'obtenir l'opcode
+
+/*Fonction qui permet d'obtenir l'opcode de notre instruction*/
+void get_op(char *ligne, char *op){
     int i = 0;
     int j = 0;
     while(ligne[i] != ':'){
@@ -45,7 +50,9 @@ void get_op(char *ligne, char *op){// permet d'obtenir l'opcode
     }
     op[6] = '\0';
 }
-int get_param(char *ligne,int *tab){//Pour connaitre les param   
+
+/*Fonction qui permet de connaître les paramètres*/
+int get_param(char *ligne,int *tab){
     int i =0;
     int j = 0;
     while(ligne[i] != ':'){
@@ -67,6 +74,8 @@ int get_param(char *ligne,int *tab){//Pour connaitre les param
     }
     return j;
 }
+
+/*Fonction qui */
 int nb_op_good(int nb_op_fonc, int tab[3]){
     int resultat = 0;
     int nb =0;
@@ -81,7 +90,9 @@ int nb_op_good(int nb_op_fonc, int tab[3]){
     }
     return resultat;
 }
-int is_in(int *tab, int value){//Pour savoir si je dois mettre la valeur dedans
+
+/*Fonction qui permet de savoir si on doit mettre la valeur dedans*/
+int is_in(int *tab, int value){
     int in = 0;
     for(int i = 0; i<4; i++){
         if(tab[i] == value){
@@ -91,6 +102,8 @@ int is_in(int *tab, int value){//Pour savoir si je dois mettre la valeur dedans
     }
     return in;
 }
+
+/*Fonction qui*/
 void concat_R(char *mot,int tab[3], int *tab_file, char *opcode, char * fonction){
     char *rs = (char *)malloc(sizeof(char)*6);
     char *rt = (char *)malloc(sizeof(char)*6);
@@ -149,6 +162,8 @@ void concat_R(char *mot,int tab[3], int *tab_file, char *opcode, char * fonction
     free(rs);
     
 }
+
+/*Fonction qui*/
 void fonctions(char *commande){
     FILE *fp = fopen("dico.txt", "r");
 
