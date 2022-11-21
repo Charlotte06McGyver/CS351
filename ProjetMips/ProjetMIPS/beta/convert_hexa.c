@@ -4,7 +4,8 @@
 #include "header.h"
 #include <math.h>
 
-int binaryhexa(char mot[4]){//Converti la veleur binaire en décimal
+/*Fonction qui convertit la valeur binaire en décimal*/
+int binaryhexa(char mot[4]){
   int value = 0;
   //On a un tableau de bit, pour chaque bit du tableau qui vaut 1 on fait 2^(4-son rang)
   if(mot[0] == '1'){
@@ -22,7 +23,8 @@ int binaryhexa(char mot[4]){//Converti la veleur binaire en décimal
   return value;
 }
 
-char tohexa(int value){//converti la valeur décimal en hexadécimal
+/*Fonction qui convertit la valeur décimale en hexadécimal*/
+char tohexa(int value){
   char resultat;
   if(value == 10){
     resultat = 'a';
@@ -39,11 +41,12 @@ char tohexa(int value){//converti la valeur décimal en hexadécimal
   }else{
     resultat = value + '0';
   }
-  // on ne moddifie pas les valeurs qio sont comprise entre 0 et 9
+  // on ne modifie pas les valeurs qui sont comprises entre 0 et 9
   return resultat;
 }
 
-void gotohexa(char *code, char *mot){// converti 32 bit en hexadécimal
+/*Fonction qui convertit 32 bits en hexadécimal*/
+void gotohexa(char *code, char *mot){
   int i = 0;
   int index = 0;
   char *value = malloc(sizeof(char)*2);
@@ -58,7 +61,7 @@ void gotohexa(char *code, char *mot){// converti 32 bit en hexadécimal
     }
 
     mot1[i]=code[index];
-    value[0] = tohexa(binaryhexa(mot1));//converti le paquet de 4 bit en héxa
+    value[0] = tohexa(binaryhexa(mot1));//convertit le paquet de 4 bit en héxa
     value[1] = '\0';
     strcat(mot, value);
     index++;
@@ -71,7 +74,8 @@ void gotohexa(char *code, char *mot){// converti 32 bit en hexadécimal
 
 }
 
-int byte(int value){//Calcule le nombre de bit nécessaire pour coder notre décimal en binaire
+/*Fonction qui calcule le nombre de bits nécessaire pour coder notre décimal en binaire*/
+int byte(int value){
   int i= 0;
   int a = 1;
   while(a == 1){
@@ -85,7 +89,8 @@ int byte(int value){//Calcule le nombre de bit nécessaire pour coder notre déc
   return i;
 }
 
-void bit(int value, int size, char *tab){//Converti un décimal en binaire sur size bit
+/*Fonction qui convertit un décimal en binaire sur size bit*/
+void bit(int value, int size, char *tab){
   int res = 0;
   int i = 0;
   int index = 0;

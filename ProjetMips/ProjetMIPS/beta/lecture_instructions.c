@@ -7,8 +7,8 @@
 /*Fonction qui lit une instruction MIPS et qui renvoie l'opérateur de la fonction dans un tableau de char */
 void lecture_operateur (char* instruction, char * operateur){
 
-     //on cree notre tableau contenant notre operateur
-    /*on constate que nos opérateur sont codes au plus sur 7 caractères, le 8e caractere est pour la sentinelle*/
+    //on cree notre tableau contenant notre operateur
+    /*on constate que nos opérateurs sont codes au plus sur 7 caractères, le 8e caractere est pour la sentinelle*/
     int i = 0;
 
     while (instruction[i] != ' '&& instruction[i] != '\0'){
@@ -21,8 +21,8 @@ void lecture_operateur (char* instruction, char * operateur){
 
 /*On fait le choix de réaliser une fonction par type d'instruction pour la lecture des opérandes*/
 
-//ADD $7, $15, $2
 
+/*Fonction qui récupère les registres (les opérandes) des instructions de type R*/
 void lecture_operandeR (char* instruction, int* operande){
 
     int i = 0;
@@ -41,8 +41,7 @@ void lecture_operandeR (char* instruction, int* operande){
     }
 }
 
-//ADDI $5, $0, 5
-
+/*Fonction qui récupère les registres (les opérandes) des instructions de type I ainsi que la valeur immédiate de l'offset*/
 void lecture_operandeI (char* instruction, int* operande){
 
     int i = 0; //indice de l'instruction
@@ -84,7 +83,18 @@ void lecture_operandeI (char* instruction, int* operande){
     }
 }
 
+/*Fonction qui récupère l'adresse de target des instructions de type J*/
+void lecture_operandeJ (char* instruction, char* target) {
 
-void lecture_operandeJ (char* instruction, int* operande) {
+    int i = 0; //indice de l'instruction
+    int c = 0; //indice de l'adresse target
 
+    while (instruction[i] != ' ' && instruction[i] != '\0'){ //on avance jusqu'au target
+        i++;
+    }
+    while (instruction[i+1] != '\0'){
+        target[c] = instruction[i+1]; //on récupère le target
+        i++;
+        c++;
+    }
 }
