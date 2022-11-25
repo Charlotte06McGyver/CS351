@@ -23,7 +23,7 @@ date: [18/10/22]
 * Comment avez-vous choisi de programmer l'analyse de texte (dont la lecture
 des opérandes entières) ?
 
-[COMPLÉTER ICI]
+[Pour l'analyse de texte nous avons choisi de coder une fonction qui récupère le nom de l'opérateur et une fonction qui récupère les opérandes (les regaistres ou les valeur d'offset selon le type de l'instruction). Nous avons réalisé une fonction de lecture d'opérande par type d'instruction. ]
 
 * Avez-vous vu des motifs récurrents émerger ? Avez-vous "factorisé" ces motifs
 pour éviter de les répéter ? Si non, serait-ce difficile ?
