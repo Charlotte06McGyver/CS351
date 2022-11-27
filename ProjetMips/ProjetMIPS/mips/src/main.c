@@ -17,7 +17,7 @@ int main(int argc, char **argv)
    FILE * prog_file; //fichier qui contiendra le programme assembleur a lire
    FILE * sortie_assemblage; //fichier qui contiendra les instructions assembleur traduites en hexadecimal (code assemblé)
    FILE * sortie_terminal; //fichier qui contiendra l'état final du programme à la fin de l'exécution
-   char *commande = (char*)malloc(sizeof(char)*20);
+   char *commande = (char*)malloc(sizeof(char)*100);
    int leave = 0;
    char c;
 
