@@ -66,7 +66,7 @@ void lecture_operandeI (char* instruction, int* operande){
             c++;
         }
 
-        /*Lecture de la valeur immediate codée sur 16 bits ! (offset)*/
+        /*Lecture de la valeur immediate codée sur 16 bits !*/
         else if((instruction[i] == ' ') && (instruction[i+1] != '$')){
             int signe;
             i++;
@@ -79,24 +79,21 @@ void lecture_operandeI (char* instruction, int* operande){
                 signe = 1;
                 operande[c] = instruction[i]-48;
             }
-            while (instruction[i+1] != '\0'){ //tant qu'on est pas arrivé à la fin de l'instruction, on lit la valeur de l'offset que l'on transforme en décimal
+            while ((instruction[i+1] != '\0') && (instruction[i+1] != '(')){ //tant qu'on est pas arrivé à la fin de l'instruction, on lit la valeur de l'offset que l'on transforme en décimal
                 i++;
                 operande[c] = operande[c]*10 + signe*(instruction[i]-48);
             }
-        }
 
-        /*Lecture de la valeur immédiate dans le cas 0(registre)*/
-        else if ((instruction[i] == '0') && (instruction[i+1] == '(') && (instruction[i+4] == ')')){ //registre entre 0 et 9
-            operande[c] = instruction[i+3] - 48;
-            c++;
-            i = i + 4;      
+            if (intruction[i+1] == '('){
+                operande[c+1] = operande[c]; //si on a une valeur d'offset, on la met à la fin du tableau résultat
+                operande[c] = 0; //on remet operande[c] à 0
+                i = i+3;
+                while(instruction[i] != ')'){
+                    operande[c] = operande[c]*10 + signe*(instruction[i]-48);
+                    i++;
+                }
+            }
         }
-       else if ((instruction[i] == '0') && (instruction[i+1] == '(') && (instruction[i+5] == ')')){ //registre entre 0 et 9
-            operande[c] = (instruction[i+3] - 48)*10 + (instruction[i+4] - 48);
-            c++;
-            i = i + 5;      
-        }
-
         i++;
     }
 }
