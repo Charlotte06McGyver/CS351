@@ -1,0 +1,33 @@
+# Instructions type R       EXPECTED_ASSEMBLY       EXPECTED_FINAL_STATE
+
+ADD $7, $5, $2              # 00a23820              # $07:16   
+SUB $8, $3, $2              # 00a23820              # $09:5
+MULT $5, $2                 # 00a20018              # LO:55
+DIV $5, $2                  # 00a2001a              # $10:0
+AND $0, $31, $31            # 03ff0024
+OR $31, $0, $2              # 0004f825
+XOR $4, $7, $31             # 00ff2026
+ROTR $10, $7, $9            # 00275242
+SRL $10, $7, $9             # 00075242
+SLL $24, $25, $30           # 0019c780
+SLT $24, $25, $30           # 033ec02a
+MFHI $9                     # 00004810
+MFLO $9                     # 00004812
+JR
+NOP                         # 00000000
+
+#Instructions type I
+
+ADDI $31, $0, 65535         # 201fffff
+LW $10, 0($31)              # 8fea0000
+SW $10, 0($31)              # afea0000
+LUI $31, -32768             # 3c1f8000
+BEQ $31, $31, 65535         # 13ffffff
+BNE $0, $0, -1              # 1400ffff
+BGTZ $19, 89                # 1e600059
+BLEZ $20, 90                # 1a80005a
+
+#Instructions type J
+J 67108863                  # 0bffffff
+JAL 0                       # 0c000000
+
