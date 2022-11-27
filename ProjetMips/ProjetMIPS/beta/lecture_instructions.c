@@ -85,6 +85,18 @@ void lecture_operandeI (char* instruction, int* operande){
             }
         }
 
+        /*Lecture de la valeur immédiate dans le cas 0(registre)*/
+        else if ((instruction[i] == '0') && (instruction[i+1] == '(') && (instruction[i+4] == ')')){ //registre entre 0 et 9
+            operande[c] = instruction[i+3] - 48;
+            c++;
+            i = i + 4;      
+        }
+       else if ((instruction[i] == '0') && (instruction[i+1] == '(') && (instruction[i+5] == ')')){ //registre entre 0 et 9
+            operande[c] = (instruction[i+3] - 48)*10 + (instruction[i+4] - 48);
+            c++;
+            i = i + 5;      
+        }
+
         i++;
     }
 }
