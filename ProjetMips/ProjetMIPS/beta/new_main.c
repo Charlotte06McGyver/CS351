@@ -13,8 +13,6 @@ int main(){
     int exit = 0;
  
     commande[0] = '\0';
-   
- 
 
     while(exit == 0){
     scanf("%[^\n]%*c", commande);
@@ -29,4 +27,6 @@ int main(){
     }
     
     free(commande);
+
+
 }

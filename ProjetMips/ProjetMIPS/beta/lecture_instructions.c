@@ -84,7 +84,7 @@ void lecture_operandeI (char* instruction, int* operande){
                 operande[c] = operande[c]*10 + signe*(instruction[i]-48);
             }
 
-            if (intruction[i+1] == '('){
+            if (instruction[i+1] == '('){
                 operande[c+1] = operande[c]; //si on a une valeur d'offset, on la met à la fin du tableau résultat
                 operande[c] = 0; //on remet operande[c] à 0
                 i = i+3;
