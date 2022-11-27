@@ -23,22 +23,22 @@ date: [18/10/22]
 * Comment avez-vous choisi de programmer l'analyse de texte (dont la lecture
 des opérandes entières) ?
 
-[Pour l'analyse de texte nous avons choisi de coder une fonction qui récupère le nom de l'opérateur et une fonction qui récupère les opérandes (les regaistres ou les valeur d'offset selon le type de l'instruction). Nous avons réalisé une fonction de lecture d'opérande par type d'instruction. ]
+[Pour l'analyse de texte nous avons choisi de coder une fonction qui récupère le nom de l'opérateur et une fonction qui récupère les opérandes (les registres ou les valeurs d'offset selon le type de l'instruction). Nous avons réalisé une fonction de lecture d'opérande par type d'instruction. ]
 
 * Avez-vous vu des motifs récurrents émerger ? Avez-vous "factorisé" ces motifs
 pour éviter de les répéter ? Si non, serait-ce difficile ?
 
-[Pour chaque type nous avons des motifs récurent. Pour le type R nous avons le registre OPCODE qui vaut 0 et c'est le registre fonction qui change. De plus l'odre des registre est toujours le même dans l'appel de la fonction. Par exemple si une commande possède les registres rs et rt en argument il faudra toujours placer rs avant rt; exemple : AND rd , rs, rt rt BEQ rs, rt offset]
+[Pour chaque type nous avons des motifs récurrents. Pour le type R nous avons le registre OPCODE qui vaut 0 et c'est le registre fonction qui change. De plus l'odre des registres est toujours le même dans l'appel de la fonction. Par exemple si une commande possède les registres rs et rt en argument il faudra toujours placer rs avant rt; exemple : AND rd , rs, rt rt BEQ rs, rt offset]
 
 * Comment avez-vous procédé pour écrire les tests ? Étes-vous confiant·e·s que
 toutes les instructions gérées sont couvertes ? 
 
-[Nous avons écrit les teste à la main de manière intélligent,nous avons testé toute les commande sauf LR. Nous avons essayer de combler tous les cas possible, pour le type R les registres sont compris entre 0 et 31 nous avons dons testé avec 0 et 31. Pour le type I la valeur immédiate est comprise entre -32768 et 65535, nous avons dons testé avec ses 2 valeurs. Pour le type J nous avons testé avec la valeur 0 (qui est le min) et la valeur 67108863( qui est le max)]
+[Nous avons écrit les tests à la main de manière intelligente,nous avons testé toutes les commande sauf LR. Nous avons essayer de combler tous les cas possibles, pour le type R les registres sont compris entre 0 et 31 nous avons donc testé avec 0 et 31. Pour le type I la valeur immédiate est comprise entre -32768 et 65535, nous avons donc testé avec ces 2 valeurs. Pour le type J nous avons testé avec la valeur 0 (qui est le min) et la valeur 67108863( qui est le max)]
 
 * Quelle a été votre expérience avec l'utilisation et la compréhension de la
 documentation (ie. des annexes) ?
 
-[L'annexe nous permet facilement de coder les instruction, cepandant la compréhension des commandes en elle même est plustôt difficile]
+[L'annexe nous permet facilement de coder les instructions, cepandant la compréhension des commandes en elle même est plutôt difficile]
 
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :
   - [X] Implémenté la traduction pour des instructions de toutes les catégories
