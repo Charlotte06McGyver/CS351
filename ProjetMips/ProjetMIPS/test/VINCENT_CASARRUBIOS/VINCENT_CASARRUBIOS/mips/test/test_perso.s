@@ -1,4 +1,3 @@
-#Ne pas commencer par une ligne 
 JAL 0
 J 67108863
 BLEZ $20, 0

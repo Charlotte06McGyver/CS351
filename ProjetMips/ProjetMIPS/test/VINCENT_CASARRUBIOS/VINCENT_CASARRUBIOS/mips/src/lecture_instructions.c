@@ -115,7 +115,7 @@ void lecture_operandeJ (char* instruction, int* target) {
     while (instruction[i+1] != '\0'){
         mot[c] = instruction[i+1]; //on récupère le target
         if(mot[c] <48 || mot[c]>57){
-            fatal("Trop peu d'argument ou format incorrect");
+            fatal("Trop peut d'argument ou format incorrect");
         }
         i++;
         c++;

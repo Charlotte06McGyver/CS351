@@ -7,7 +7,7 @@
 #include "../include/lecture_instructions.h"
 
 
-int commande_in(char * ligne, char *com){// Teste si nous sommes à la bonne ligne ou si la commande est bien dans le fichier dico.txt
+int commande_in(char * ligne, char *com){// Teste si nous somme à la bonne ligne ou si la commande est bien dans le fichier dico.txt
     char *commande = malloc(sizeof(char)*9);
     int i =0;
     while((ligne[i]!=':') && (ligne[i]!='\0')){// On prend le nom de la commande
@@ -46,7 +46,6 @@ void get_op(char *ligne, char *op){// permet d'obtenir l'opcode de notre command
     }
     op[6] = '\0';
 }
-
 int get_param(char *ligne,int *tab){//Pour connaitre les param de notre commande 
     int i =0;
     int j = 0;
@@ -54,7 +53,7 @@ int get_param(char *ligne,int *tab){//Pour connaitre les param de notre commande
         i++;
     }
     i = i+3;
-    while(ligne[i] != ':'){//On se décale dans notre ligne pour ne prendre que les arguments de notre commande
+    while(ligne[i] != ':'){//On se décale dans notre ligne pour prendre que les arguments de notre commande
         i++;
     }
     i++;
@@ -69,7 +68,6 @@ int get_param(char *ligne,int *tab){//Pour connaitre les param de notre commande
     }
     return j;// retourne le nombre d'arguments que prend notre commande
 }
-
 int nb_op_good(int nb_op_fonc, int tab[3]){// Teste si nous avons bien le bon nombre de paramètres dans notre fonction
     int resultat = 0;
     int nb =0;
@@ -84,7 +82,6 @@ int nb_op_good(int nb_op_fonc, int tab[3]){// Teste si nous avons bien le bon no
     }
     return resultat;
 }
-
 int is_in(int *tab, int value){//Pour savoir si je dois mettre la valeur dans notre tableau de 32bits
     int in = 0;
     for(int i = 0; i<4; i++){
@@ -95,7 +92,6 @@ int is_in(int *tab, int value){//Pour savoir si je dois mettre la valeur dans no
     }
     return in;
 }
-
 void concat_R(char *mot,int tab[3], int *tab_file, char *opcode, char * fonction,char *operateur){//Créer les instructions de type R
     char *rs = (char *)malloc(sizeof(char)*6);
     char *rt = (char *)malloc(sizeof(char)*6);
@@ -104,7 +100,7 @@ void concat_R(char *mot,int tab[3], int *tab_file, char *opcode, char * fonction
     int index_param = 0;// Pour savoir ou je le trouve dans tab
    
 
-    strcpy(rs, "00000");//On initialise nos registres avec la valeur 0
+    strcpy(rs, "00000");//On initialise nos rgistre avec la valeur 0
     rs[5] = '\0';
     strcpy(rt, "00000");
     rt[5] = '\0';
@@ -152,7 +148,6 @@ void concat_R(char *mot,int tab[3], int *tab_file, char *opcode, char * fonction
     free(rs);
     
 }
-
 void concat_I(char *mot,int tab[3], int *tab_file, char *opcode){//Créer les instructions de type I
     char *rs = (char *)malloc(sizeof(char)*6);
     char *rt = (char *)malloc(sizeof(char)*6);
@@ -160,7 +155,7 @@ void concat_I(char *mot,int tab[3], int *tab_file, char *opcode){//Créer les in
     int index_param = 0;// Pour savoir ou je le trouve dans tab
    
     
-    strcpy(rs, "00000");//On initialise nos registres avec la valeur 0
+    strcpy(rs, "00000");//On initialise nos rgistres avec la valeur 0
     rs[5] = '\0';
     strcpy(rt, "00000");
     rt[5] = '\0';
@@ -190,10 +185,10 @@ void concat_I(char *mot,int tab[3], int *tab_file, char *opcode){//Créer les in
     free(rs);
 
 }
-
 void concat_J(char *mot,int add, char *opcode){//Créer les instructions de type J
     char *adresse = (char *)malloc(sizeof(char)*27);
-     
+    
+   
     adresse[0] = '\0';//On initialise notre registre 
     if(add == 0){
         strcpy(adresse,"00000000000000000000000000");
@@ -205,10 +200,12 @@ void concat_J(char *mot,int add, char *opcode){//Créer les instructions de type
     mot[6] = '\0';
     mot = strcat(mot,adresse);
     mot[32] = '\0';
-       
+    
+    
     free(adresse);
-}
 
+
+}
 void fonctions(char *commande,int mode,char *assemblage_sortie){
     FILE *fp = fopen("dico.txt", "r");
     FILE *sortie_assemblage;
@@ -225,7 +222,7 @@ void fonctions(char *commande,int mode,char *assemblage_sortie){
     mot_hexa[0] = '\0';
 
     operateur[0] = '\0';
-    tab[0] = 65536;//Initialise notre tableau qui contient les paramètres de notre fonction avec des valeurs qui ne sont pas possibles d'atteindre pour le type I et R
+    tab[0] = 65536;//Initialise notre tableau qui contient les paramètre de notre fonction avec des valeurs qui ne sont pas possibles d'atteindre pour le type I et R
     tab[1] = 65536;
     tab[2] = 65536;
     

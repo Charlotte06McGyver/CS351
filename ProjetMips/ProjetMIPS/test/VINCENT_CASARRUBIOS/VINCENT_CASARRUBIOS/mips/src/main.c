@@ -17,7 +17,7 @@ int main(int argc, char **argv)
    FILE * prog_file; //fichier qui contiendra le programme assembleur a lire
    FILE * sortie_assemblage; //fichier qui contiendra les instructions assembleur traduites en hexadecimal (code assemblé)
    FILE * sortie_terminal; //fichier qui contiendra l'état final du programme à la fin de l'exécution
-   char *commande = (char*)malloc(sizeof(char)*100);
+   char *commande = (char*)malloc(sizeof(char)*20);
    int leave = 0;
    char c;
 
@@ -78,9 +78,9 @@ int main(int argc, char **argv)
       printf("Hello émulateur MIPS!, tapez EXIT pour quitter le mode intéractif\n");
       while(leave == 0){
          scanf("%[^\n]%*c", commande);//Lit la commande
-         if(strcmp(commande, "\0")==0){//On teste qu'on n'ait pas appuyé plusieurs fois sur entrée
+         if(strcmp(commande, "\0")==0){//On test qu'on ait pas appuyé plusieurs fois sur entrée
             fatal("Ne pas apuyer 2 fois sur entré");
-         }else if((strcmp(commande, "EXIT")==0)){//Teste si on veut quitter le mode interactif
+         }else if((strcmp(commande, "EXIT")==0)){//Test si on veut quitter le mode intéractif
             leave = 1;
          }else{
             fonctions(commande,mode,argv[2]);// appelle la commande qui convertit notre commande en hexa    
@@ -96,7 +96,7 @@ int main(int argc, char **argv)
                fseek(prog_file,-1,SEEK_CUR);// Si ce n'est pas une ligne vide on doit redécaler le pointeur de fichier, pour qu'il prenne bien toute la ligne 
             }            
          }
-         if(commande[0] != '#'){// Teste si ce n'est pas un commentaire
+         if(commande[0] != '#'){// Teste si ce n'est pas un commentire
             fonctions(commande,mode,argv[2]);// Appel de la fonction qui convertit notre commande en hexa
             if(mode == 1){
                printf("Appuyez sur une touche pour continuer et entrée pour continuer\n");
