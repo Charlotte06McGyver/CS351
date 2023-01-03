@@ -8,7 +8,7 @@
 #include "../include/header.h"
 #include "../include/convert_hexa.h"
 #include "../include/lecture_instructions.h"
-#include "../include/beta.h"
+#include "../include/traduction_hexa_instructions.h"
 
 
 int main(int argc, char **argv)

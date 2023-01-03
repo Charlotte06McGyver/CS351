@@ -6,7 +6,6 @@
 #include "../include/convert_hexa.h"
 #include "../include/lecture_instructions.h"
 
-
 int commande_in(char * ligne, char *com){// Teste si nous sommes à la bonne ligne ou si la commande est bien dans le fichier dico.txt
     char *commande = malloc(sizeof(char)*9);
     int i =0;
